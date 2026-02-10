@@ -4,8 +4,6 @@ import * as controllers from "../controllers/playlist.js";
 
 const router = Router();
 
-// routes ex. router.get("/", controllers.getPlaylists)
-
 router.get("/", verifyToken, controllers.getUserPlaylist);
 router.get("/:playlistId", verifyToken, controllers.getUserPlaylist);
 router.post("/", verifyToken, controllers.createPlaylist);
