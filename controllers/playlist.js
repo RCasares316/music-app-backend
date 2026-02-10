@@ -1,14 +1,18 @@
 import Playlist from "../models/playlist.js";
 
-export const getUserPlaylists = (req, res) => {
+export const getUserPlaylists = async (req, res) => {
   try {
+    const playlistData = await Playlist.find({}).populate("owner");
+    res.json(playlistData);
   } catch (error) {
-    console.log(error);
+    console.lor(error);
   }
 };
 
-export const getUserPlaylist = (req, res) => {
+export const getUserPlaylist = async (req, res) => {
   try {
+    const playlistData = await Playlist.findById(req.params.playlistId).populate("owner");
+    res.json(playlistData);
   } catch (error) {
     console.log(error);
   }
