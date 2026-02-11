@@ -51,17 +51,41 @@ export const updatePlaylist = async (req, res) => {
   }
 };
 
-export const addTrack = (req, res) => {
+export const addTrack = async (req, res) => {
+  const { playlistId, trackId } = req.params;
+
   try {
-  } catch (error) {
-    console.log(error);
+    const updatedPlaylist = await Playlist.findByIdAndUpdate(
+      playlistId,
+      { $addToSet: { tracks: trackId } }
+    );
+
+    if (!updatedPlaylist) {
+      return res.status(404).json({ message: "Playlist not found" });
+    }
+
+    res.status(200).json(updatedPlaylist);
+  } catch (err) {
+    res.status(500).json({ message: "Error adding track", error: err.message });
   }
 };
 
-export const removeTrack = (req, res) => {
+export const removeTrack = async (req, res) => {
+  const { playlistId, trackId } = req.params;
+
   try {
-  } catch (error) {
-    console.log(error);
+    const updatedPlaylist = await Playlist.findByIdAndUpdate(
+      playlistId,
+      { $pull: { tracks: trackId } }
+    );
+
+    if (!updatedPlaylist) {
+      return res.status(404).json({ message: "Playlist not found" });
+    }
+
+    res.status(200).json(updatedPlaylist);
+  } catch (err) {
+    res.status(500).json({ message: "Error removing track", error: err.message });
   }
 };
 
