@@ -4,7 +4,7 @@ import * as controllers from "../controllers/playlist.js";
 
 const router = Router();
 
-router.get("/", verifyToken, controllers.getUserPlaylist);
+router.get("/", verifyToken, controllers.getUserPlaylists);
 router.get("/:playlistId", verifyToken, controllers.getUserPlaylist);
 router.post("/", verifyToken, controllers.createPlaylist);
 router.put("/:playlistId", verifyToken, controllers.updatePlaylist);

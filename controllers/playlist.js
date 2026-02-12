@@ -2,7 +2,7 @@ import Playlist from "../models/playlist.js";
 
 export const getUserPlaylists = async (req, res) => {
   try {
-    const playlistData = await Playlist.find({}).populate("owner");
+    const playlistData = await Playlist.find({}).populate("owner tracks");
     res.json(playlistData);
   } catch (error) {
     console.lor(error);
@@ -11,7 +11,9 @@ export const getUserPlaylists = async (req, res) => {
 
 export const getUserPlaylist = async (req, res) => {
   try {
-    const playlistData = await Playlist.findById(req.params.playlistId).populate("owner");
+    const playlistData = await Playlist.findById(
+      req.params.playlistId,
+    ).populate("owner");
     res.json(playlistData);
   } catch (error) {
     console.log(error);
@@ -55,10 +57,9 @@ export const addTrack = async (req, res) => {
   const { playlistId, trackId } = req.params;
 
   try {
-    const updatedPlaylist = await Playlist.findByIdAndUpdate(
-      playlistId,
-      { $addToSet: { tracks: trackId } }
-    );
+    const updatedPlaylist = await Playlist.findByIdAndUpdate(playlistId, {
+      $addToSet: { tracks: trackId },
+    });
 
     if (!updatedPlaylist) {
       return res.status(404).json({ message: "Playlist not found" });
@@ -74,10 +75,9 @@ export const removeTrack = async (req, res) => {
   const { playlistId, trackId } = req.params;
 
   try {
-    const updatedPlaylist = await Playlist.findByIdAndUpdate(
-      playlistId,
-      { $pull: { tracks: trackId } }
-    );
+    const updatedPlaylist = await Playlist.findByIdAndUpdate(playlistId, {
+      $pull: { tracks: trackId },
+    });
 
     if (!updatedPlaylist) {
       return res.status(404).json({ message: "Playlist not found" });
@@ -85,7 +85,9 @@ export const removeTrack = async (req, res) => {
 
     res.status(200).json(updatedPlaylist);
   } catch (err) {
-    res.status(500).json({ message: "Error removing track", error: err.message });
+    res
+      .status(500)
+      .json({ message: "Error removing track", error: err.message });
   }
 };
 
