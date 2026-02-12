@@ -13,7 +13,7 @@ export const getUserPlaylist = async (req, res) => {
   try {
     const playlistData = await Playlist.findById(
       req.params.playlistId,
-    ).populate("owner");
+    ).populate("owner tracks");
     res.json(playlistData);
   } catch (error) {
     console.log(error);
