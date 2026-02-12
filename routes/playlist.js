@@ -9,7 +9,7 @@ router.get("/:playlistId", verifyToken, controllers.getUserPlaylist);
 router.post("/", verifyToken, controllers.createPlaylist);
 router.put("/:playlistId", verifyToken, controllers.updatePlaylist);
 router.put("/:playlistId/track/:trackId", verifyToken, controllers.addTrack);
-router.put("/:playlistId/track/:trackId", verifyToken, controllers.removeTrack);
+router.delete("/:playlistId/track/:trackId", verifyToken, controllers.removeTrack);
 router.delete("/:playlistId", verifyToken, controllers.deletePlaylist);
 
 export default router;
