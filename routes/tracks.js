@@ -4,7 +4,7 @@ import * as controllers from "../controllers/tracks.js";
 
 const router = Router();
 
-router.get("/", verifyToken, controllers.getTracks);
-router.get("/:trackId", verifyToken, controllers.getTrack);
+router.get("/", controllers.getTracks);
+router.get("/:trackId", controllers.getTrack);
 
 export default router;
