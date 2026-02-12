@@ -36,6 +36,7 @@ export const updatePlaylist = async (req, res) => {
     const updatedPlaylist = await Playlist.findByIdAndUpdate(
       req.params.playlistId,
       req.body,
+      { new: true },
     );
 
     if (!updatedPlaylist) {
