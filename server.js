@@ -18,9 +18,12 @@ app.use(logger("dev"));
 app.get("/", (_, res) => {
   res.send("You have reached our API.");
 });
-
 // Routes
 app.use("/", routes);
+
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
 
 // Start the server and listen on port 3000
 db.on("connected", () => {
