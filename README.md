@@ -35,6 +35,8 @@ CORS – Cross-origin request handling
 
 Morgan (optional) – Request logging
 
+Railway - Deployment & hosting
+
 
 
 # Data Models
@@ -196,9 +198,9 @@ npm run dev
 
 # Author
 ### Jullian Guerrero
-### JimmieAlice Williams
+### Jimmiealice Williams
 ### Richard Casares
-GitHub: (your link)
+GitHub: [Link](https://github.com/RCasares316/hoot-express-backend)
 
 🧠 Reflections
 Building this backend strengthened our understanding of secure API design, especially around authentication, protected routes, and enforcing data ownership at the database query level.
