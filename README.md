@@ -4,6 +4,8 @@ This is the backend server for the music application.
 It provides a RESTful API that handles authentication, playlist management, user data, and secure communication with the database.
 The server is responsible for enforcing data ownership, validating requests, and persisting user-generated content while integrating seamlessly with the React frontend.
 
+[Backend Application](music-app-backend.up.railway.app)
+
 # Overview
 
 The API allows authenticated users to:
