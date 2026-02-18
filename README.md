@@ -199,7 +199,7 @@ JWT_SECRET=your_secret
 npm run dev
 
 # Author
-### Jullian Guerrero
+### Julien Guerrero
 ### Jimmiealice Williams
 ### Richard Casares
 GitHub: [Link](https://github.com/RCasares316/hoot-express-backend)
